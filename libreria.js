@@ -1,25 +1,22 @@
 let mylibrary = []
 let numeroindex = 0
-function Book(titulo,autor,paginas,loleiste,index){
-    this.title = titulo
-    this.author = autor
-    this.pages = paginas
-    if(loleiste == true){
-        this.itsread = true
-    }else{
-        this.itsread = false
+class Book{
+    constructor(titulo,autor,paginas,loleiste,index){
+        this.title = titulo
+        this.author = autor
+        this.pages = paginas
+        if(loleiste == true){
+            this.itsread = true
+        }else{
+            this.itsread = false
+        }
+        this.indice = index
     }
-    this.indice = index
+    sayhello(){
+        console.log('SUP GEE')
+        document.getElementById(this.indice.toString()).remove()
+    }
 }
-
-function addBookToLibrary(){
-
-}
-// const libro1 = new Book("Howarts","Lebron","231", true)
-// const libro2 = new Book("Phisics","Adam","523", false)
-
-// mylibrary.push(libro1)
-// mylibrary.push(libro2)
 
 const $libreria = document.querySelector('.libreria')
 const $anadir = document.querySelector('.addbutton')
@@ -71,8 +68,7 @@ function crearcarta(lacarta,titulo,autor,paginas,loleyo,indix){
     const borrar = document.createElement('button')
     borrar.innerText = 'X'
     borrar.addEventListener('click', (e)=>{
-        const itemsoontodelete = document.getElementById(indix.toString())
-        itemsoontodelete.remove()
+        mylibrary[indix].sayhello()
     })
     unbot.classList.add('leido')
     unbot.classList.add('noleido')
@@ -102,12 +98,3 @@ function crearcarta(lacarta,titulo,autor,paginas,loleyo,indix){
     lacarta.append(unbot)
     lacarta.append(borrar)
 }
-// function leido(unbool,e){
-//     if(unbool== true){
-//         e.classList.remove('noleido')
-//         e.innerText ='Leido'
-//     }else{
-//         e.classList.remove('leido')
-//         e.innerText = 'No Leido'
-//     }
-// }
